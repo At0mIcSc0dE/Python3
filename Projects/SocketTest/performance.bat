@@ -1,0 +1,1 @@
+FOR /L %%G IN (0, 1, 100) DO python client.py
