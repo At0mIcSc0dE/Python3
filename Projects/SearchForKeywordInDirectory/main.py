@@ -1,8 +1,8 @@
 import os
 
 
-path = "D:/Applications/Steam/steamapps/common/Kerbal Space Program - NecMods - S-Test/GameData"
-targetKeyword = "sunflare"
+path = "D:/dev/Cpp/Projects/NodePlanningEditor/Util/vendor/spdlog"
+targetKeyword = "level::to_c_str"
 # targetKeyword2 = "RealismOverhaul"
 
 with open("output.txt", "w") as ostream:
