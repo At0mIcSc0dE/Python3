@@ -1,9 +1,11 @@
 import os
 
-path = "D:/dev/Cpp/ProjectsArchive/ThirdPartyProjects/Blender"
+path = "D:/dev/Cpp/Projects/NodePlanningEditor"
 
-excludePaths = ["lib\\win64_vc15"]
+excludePaths = ["vendor"]
 fileEndings = [".cpp", ".h", ".c", ".cc", ".hpp", ".hh", ".c++", ".h++"]
+
+excludeTokens = ["///"]
 
 # Data:
 # Blender:
@@ -31,10 +33,11 @@ for directory in os.walk(path):
 
                             ranloop = False
                             for line in stream.readlines():
-                                if "//" not in line and ("/" not in line and "*" not in line):
-                                    pathToFile = directory[0] + \
-                                        "/" + filename
-                                    lines += 1
+                                for excludeToken in excludeTokens:
+                                    if excludeToken not in line:
+                                        pathToFile = directory[0] + \
+                                            "/" + filename
+                                        lines += 1
                             print(pathToFile.replace("\\", "/"))
                             files += 1
                         except UnicodeDecodeError:
