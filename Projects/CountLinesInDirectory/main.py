@@ -5,7 +5,8 @@ path = "D:/dev/Cpp/Projects/NodePlanningEditor"
 printContentsToFile = True
 
 excludePaths = ["vendor"]
-fileEndings = [".cpp", ".h", ".c", ".cc", ".hpp", ".hh", ".c++", ".h++"]
+fileEndings = [".cpp", ".h", ".c", ".cc", ".hpp",
+               ".hh", ".c++", ".h++", ".def", ".hlsl", ".glsl"]
 
 excludeTokens = ["///"]
 
