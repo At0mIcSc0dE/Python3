@@ -4,7 +4,7 @@ path = "D:/dev/Cpp/Projects/NodePlanningEditor"
 
 printContentsToFile = True
 
-excludePaths = ["vendor"]
+excludePaths = ["vendor", "extern", "build-Debug-Windows-x64"]
 fileEndings = [".cpp", ".h", ".c", ".cc", ".hpp",
                ".hh", ".c++", ".h++", ".def", ".hlsl", ".glsl"]
 
