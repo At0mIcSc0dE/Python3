@@ -38,7 +38,7 @@ for directory in os.walk(path):
                     if printContentsToFile:
                         with open("output.txt", "a") as writerstream:
                             writerstream.write(
-                                "\n\n==========  Line-Count-New-File ==========\n\n")
+                                f"==========  Line-Count-New-File ({filename}) ==========\n")
 
                     with open(directory[0] + "/" + filename) as stream:
                         try:
