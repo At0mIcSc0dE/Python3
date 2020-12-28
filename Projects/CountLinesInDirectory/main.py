@@ -1,6 +1,6 @@
 import os
 
-path = "D:/dev/Cpp/Projects/NodePlanningEditor"
+path = "C:/dev/Cpp/Projects/NodePlanningEditor"
 
 printContentsToFile = True
 
@@ -8,7 +8,7 @@ excludePaths = ["vendor", "extern", "build-Debug-Windows-x64"]
 fileEndings = [".cpp", ".h", ".c", ".cc", ".hpp",
                ".hh", ".c++", ".h++", ".def", ".hlsl", ".glsl"]
 
-excludeTokens = ["///"]
+excludeTokens = ["///", "//"]
 
 # Data:
 # Blender:
@@ -38,7 +38,7 @@ for directory in os.walk(path):
                     if printContentsToFile:
                         with open("output.txt", "a") as writerstream:
                             writerstream.write(
-                                f"==========  Line-Count-New-File ({filename}) ==========\n")
+                                f"\n==========  Line-Count-New-File ({filename}) ==========\n")
 
                     with open(directory[0] + "/" + filename) as stream:
                         try:
@@ -46,14 +46,17 @@ for directory in os.walk(path):
 
                             ranloop = False
                             for line in stream.readlines():
+                                shouldCount = True
                                 for excludeToken in excludeTokens:
-                                    if excludeToken not in line and not line.isspace() and len(line) > 0:
-                                        if printContentsToFile:
-                                            with open("output.txt", "a") as writerstream:
-                                                writerstream.write(line)
-                                        pathToFile = directory[0] + \
-                                            "/" + filename
-                                        lines += 1
+                                    if excludeToken in line or line.isspace() or len(line) == 0:
+                                        shouldCount = False
+                                        continue
+                                if printContentsToFile and shouldCount:
+                                    with open("output.txt", "a") as writerstream:
+                                        writerstream.write(line)
+                                    pathToFile = directory[0] + \
+                                        "/" + filename
+                                    lines += 1
                             print(pathToFile.replace("\\", "/"))
                             files += 1
                         except UnicodeDecodeError:
