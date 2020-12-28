@@ -54,8 +54,9 @@ for directory in os.walk(path):
                                 if printContentsToFile and shouldCount:
                                     with open("output.txt", "a") as writerstream:
                                         writerstream.write(line)
-                                    pathToFile = directory[0] + \
-                                        "/" + filename
+                                pathToFile = directory[0] + \
+                                    "/" + filename
+                                if shouldCount:
                                     lines += 1
                             print(pathToFile.replace("\\", "/"))
                             files += 1
